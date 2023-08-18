@@ -1,6 +1,6 @@
 import axios, { all } from 'axios';
 import {addToFavorite} from './add-to-favorites';
-import { filter } from 'lodash';
+
 
 
 // URL нашого API

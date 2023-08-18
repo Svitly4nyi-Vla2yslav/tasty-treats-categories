@@ -1,12 +1,17 @@
 import axios from 'axios';
-
+// import {
+//   getRecipesByCategory,
+//   getAllRecipes,
+//   recipesContainer,
+//   backToFirst
+// } from './api.js';
 
 const categoriesList = document.querySelector('.categories-list');
 const allCategoriesButton = document.getElementById('all-categories-button');
 
 const BASE_URL = 'https://tasty-treats-backend.p.goit.global/api/categories';
 
-export async function getCategories() {
+async function getCategories() {
   try {
     const response = await axios.get(BASE_URL);
     const markUp = createMarkUp(response.data);
@@ -20,7 +25,7 @@ export async function getCategories() {
   } catch (error) {
     console.error(error);
   }
-  getAllRecipes(); // Відображаємо всі рецепти після того, як вже відобразили всі категорії
+  //! getAllRecipes(); // Відображаємо всі рецепти після того, як вже відобразили всі категорії
 }
 
 function addClickListenersToCategories() {
@@ -29,7 +34,7 @@ function addClickListenersToCategories() {
     categoryItems.forEach(item => {
       item.addEventListener('click', () => {
         const category = item.dataset.category;
-        getRecipesByCategory(category);
+        // !getRecipesByCategory(category);
 
         // Знімаємо активний клас з усіх категорій
         categoryItems.forEach(categoryItem => {
@@ -45,7 +50,7 @@ function addClickListenersToCategories() {
           allCategoriesButton.classList.remove('active-category');
         }
       });
-      item.addEventListener('click', backToFirst);
+      //! item.addEventListener('click', backToFirst);
     });
 
     // Додаємо обробник події для кнопки "All categories"
@@ -60,9 +65,9 @@ function addClickListenersToCategories() {
         // Додаємо активний клас до кнопки "All categories"
         allCategoriesButton.classList.add('active-category');
 
-        getAllRecipes(); // Відображаємо всі рецепти, коли натискаємо на "All categories"
+        //! getAllRecipes(); // Відображаємо всі рецепти, коли натискаємо на "All categories"
       });
-      allCategoriesButton.addEventListener('click', backToFirst);
+      //! allCategoriesButton.addEventListener('click', backToFirst);
     }
   }
 }
@@ -103,7 +108,7 @@ otherFilters.forEach(filter => {
     filter.classList.add('active');
 
     const category = filter.dataset.category;
-    getRecipesByCategory(category);
+    //! getRecipesByCategory(category);
   });
 
   // Додаємо обробник події для активного стану при натисканні на категорію
@@ -127,7 +132,7 @@ if (allCategoriesButton) {
 
 getCategories();
 if (allCategoriesButton) {
-  allCategoriesButton.addEventListener('click', backToFirst);
+  //! allCategoriesButton.addEventListener('click', backToFirst);
 }
 
 // import Notiflix from 'notiflix';
